@@ -26,8 +26,74 @@ appFilters.filter('ordinal', function() {
 				return number + 'rd';
 			} else if (lastDigit > 3) {
 				return number + 'th';
+			} else {
+				return number + 'th'; // in case of 100th etc...
 			}
 			
 		}
 	}
 });
+
+
+// make filter to capitalize the first letter of a string, or a chosen letter in string
+appFilters.filter('capitalize', function() {
+	
+	// create return function with parameter and optional parameter
+	return function(input, char) {
+		
+		if (isNaN(input)) {
+			
+			var char = char - 1 || 0;
+			var letter = input.charAt(char).toUpperCase();
+			var out = [];
+			
+			for (var i = 0; i < input.length; i++) {
+				
+				if (i == char) {
+					out.push(letter);
+				} else {
+					out.push(input[i]);
+				}
+			}
+			
+			return out.join('');
+			
+		} else {
+			return input;
+		}
+		
+	}
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
