@@ -67,33 +67,51 @@ appFilters.filter('capitalize', function() {
 });
 
 
+// filter a data set for static typed languages
+//
+// ** this is just sudo code, dataset does not exist **
+//
+appFilters.filter('staticLanguage', function(){
+	
+	return function(input) {
+		
+		var out = [];
+		
+		angular.forEach(input, function(language) {
+			
+			if (language.type === 'static') {
+				out.push(language);
+			}
+			
+		});
+		
+		return out;
+	}
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+appFilters.filter('customCurrency', function() {
+	
+	return function(input, symbol, place) {
+		
+		if (isNaN(input)) {
+			return input;
+			
+		} else {
+			
+			// check optional parameter is set, else use defaults
+			var symbol = symbol || '$';
+			var place = place === undefined ? true : place;
+			
+			// place the symbol
+			if (place === true) {
+				
+				// if place is undefined then symbol goes first
+				return symbol + input;
+			} else {
+				return input + symbol;
+			}
+		}
+		
+	}
+});

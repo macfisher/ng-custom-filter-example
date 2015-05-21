@@ -16,6 +16,9 @@
 <div class="container" ng-app="appFilters">
 	<pre>{{ 1000 | ordinal }}</pre>
 	<pre>{{ 'hello world, this is a test' | capitalize: 3 }}</pre>
+	
+	<!-- parms have to be in order -->
+	<pre>{{ 350 | customCurrency:'$':false }}</pre>
 </div>
 
 </body>
